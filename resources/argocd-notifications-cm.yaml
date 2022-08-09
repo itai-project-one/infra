@@ -6,23 +6,15 @@ metadata:
 data:
   service.webhook.form: |
     url: https://37f4-2a0d-6fc2-66d2-e000-e9-b7fd-9593-7676.eu.ngrok.io/event/argocd
-#  template.form-data: |
-#    webhook:
-#      form:
-#        method: POST
-#        path: /event/argocd
-#        body: |
-#          {
-#            "test": "pasha"
-#          }
-  template.app-sync-succeeded: |
-    email:
-      subject: Application {{.app.metadata.name}} has been successfully synced.
-    message: |
-      {{if eq .serviceType "slack"}}:white_check_mark:{{end}} Application {{.app.metadata.name}} has been successfully synced at {{.app.status.operationState.finishedAt}}.
-      Sync operation details are available at: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true .
-    slack:
-      attachments: "[{\n  \"title\": \"{{ .app.metadata.name}}\",\n  \"title_link\":\"{{.context.argocdUrl}}/applications/{{.app.metadata.name}}\",\n  \"color\": \"#18be52\",\n  \"fields\": [\n  {\n    \"title\": \"Sync Status\",\n    \"value\": \"{{.app.status.sync.status}}\",\n    \"short\": true\n  },\n  {\n    \"title\": \"Repository\",\n    \"value\": \"{{.app.spec.source.repoURL}}\",\n    \"short\": true\n  }\n  {{range $index, $c := .app.status.conditions}}\n  {{if not $index}},{{end}}\n  {{if $index}},{{end}}\n  {\n    \"title\": \"{{$c.type}}\",\n    \"value\": \"{{$c.message}}\",\n    \"short\": true\n  }\n  {{end}}\n  ]\n}]    "
+  template.form-data: |
+    webhook:
+      form:
+        method: POST
+        path: /event/argocd
+        body: |
+          {
+            "test": "pasha"
+          }
   trigger.on-deployed: |
     - description: Application is synced and healthy. Triggered once per commit.
       oncePer: app.status.sync.revision
@@ -52,5 +44,5 @@ data:
   trigger.on-sync-succeeded: |
     - description: Application syncing has succeeded
       send:
-      - app-sync-succeeded
+      - form-data
       when: app.status.operationState.phase in ['Succeeded']
