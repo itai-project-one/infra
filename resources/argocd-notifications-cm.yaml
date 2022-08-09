@@ -6,14 +6,14 @@ metadata:
 data:
   service.webhook.form: |
     url: https://37f4-2a0d-6fc2-66d2-e000-e9-b7fd-9593-7676.eu.ngrok.io
+    headers:
+    - name: Content-Type
+      value: application/json
   template.form-data: |
     webhook:
       form:
         method: POST
         path: /event/argocd
-        headers: #optional headers
-        - name: Content-Type
-          value: application/json
         body: |
           {
             {{if eq .app.status.operationState.phase "Running"}} "state": "pending"{{end}}
