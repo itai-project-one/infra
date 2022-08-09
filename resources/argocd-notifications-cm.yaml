@@ -13,7 +13,8 @@ data:
         path: /event/argocd
         body: |
           {
-            "test": "pasha"
+            "phase": "{{.app.metadata.name}}",
+            "app": "{{.app.metadata.name}}"
           }
   trigger.on-deployed: |
     - description: Application is synced and healthy. Triggered once per commit.
