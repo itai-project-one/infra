@@ -12,8 +12,8 @@ data:
         method: POST
         path: /event/argocd
         headers: #optional headers
-        - name: Authorization
-          value: my token
+        - name: Content-Type
+          value: application/json
         body: |
           {
             {{if eq .app.status.operationState.phase "Running"}} "state": "pending"{{end}}
