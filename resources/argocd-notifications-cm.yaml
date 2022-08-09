@@ -7,11 +7,13 @@ data:
   service.webhook.form: |
     url: https://37f4-2a0d-6fc2-66d2-e000-e9-b7fd-9593-7676.eu.ngrok.io
   template.form-data: |
+    message: |
+    {{if eq .serviceType "slack"}}:white_check_mark:{{end}} Application {{.app.metadata.name}} has been successfully synced at {{.app.status.operationState.finishedAt}}.
+    Sync operation details are available at: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true .
     webhook:
       form:
         method: POST
         path: /event/argocd
-        body: key1=value1&key2=value2
   trigger.on-deployed: |
     - description: Application is synced and healthy. Triggered once per commit.
       oncePer: app.status.sync.revision
