@@ -12,8 +12,8 @@ data:
         method: POST
         path: /event/argocd
         headers: #optional headers
-        - name: moshe
-          value: test
+        - name: Authorization
+          value: my token
         body: |
           {
             {{if eq .app.status.operationState.phase "Running"}} "state": "pending"{{end}}
