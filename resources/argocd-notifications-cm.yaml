@@ -16,13 +16,9 @@ data:
         path: /event/argocd
         body: |
           {
-            {{if eq .app.status.operationState.phase "Running"}} "state": "pending"{{end}}
-            {{if eq .app.status.operationState.phase "Succeeded"}} "state": "success"{{end}}
-            {{if eq .app.status.operationState.phase "Error"}} "state": "error"{{end}}
-            {{if eq .app.status.operationState.phase "Failed"}} "state": "error"{{end}},
             "description": "ArgoCD",
-            "target_url": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
-            "context": "continuous-delivery/{{.app.metadata.name}}"
+            "state": {{.app.status.operationState.phase}}
+            "app": "{{.app.metadata.name}}"
           }
   trigger.on-deployed: |
     - description: Application is synced and healthy. Triggered once per commit.
