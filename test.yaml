@@ -1,0 +1,215 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-failed.form: '""'
+    notifications.argoproj.io/subscribe.on-sync-running.form: '""'
+    notifications.argoproj.io/subscribe.on-sync-succeeded.form: '""'
+    notified.notifications.argoproj.io: '{"on-sync-running:[0[].xGlbhcF_taGYrI3UsrQsINn2hl0:form:\"\"":1660310029}'
+  creationTimestamp: "2022-08-07T06:49:47Z"
+  generation: 1752
+  name: demo
+  namespace: argocd
+  resourceVersion: "139474"
+  uid: c6e6855e-d759-4f7a-a3c0-0a90a269c6a4
+operation:
+  initiatedBy:
+    username: admin
+  retry: {}
+  sync:
+    revision: c208d1a999927fb311bd88eb5fecba1a4584e323
+    syncStrategy:
+      hook: {}
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: resources
+    repoURL: https://github.com/itai-project-one/environment
+    targetRevision: HEAD
+status:
+  health:
+    status: Healthy
+  history:
+    - deployStartedAt: "2022-08-12T09:08:14Z"
+      deployedAt: "2022-08-12T09:08:25Z"
+      id: 60
+      revision: ece5dc27409139df77cdee95e5969f3c473c0409
+      source:
+        path: resources
+        repoURL: https://github.com/itai-project-one/environment
+        targetRevision: HEAD
+    - deployStartedAt: "2022-08-12T09:47:59Z"
+      deployedAt: "2022-08-12T09:48:10Z"
+      id: 61
+      revision: ece5dc27409139df77cdee95e5969f3c473c0409
+      source:
+        path: resources
+        repoURL: https://github.com/itai-project-one/environment
+        targetRevision: HEAD
+    - deployStartedAt: "2022-08-12T09:48:19Z"
+      deployedAt: "2022-08-12T09:48:26Z"
+      id: 62
+      revision: ece5dc27409139df77cdee95e5969f3c473c0409
+      source:
+        path: resources
+        repoURL: https://github.com/itai-project-one/environment
+        targetRevision: HEAD
+    - deployStartedAt: "2022-08-12T09:48:48Z"
+      deployedAt: "2022-08-12T09:48:55Z"
+      id: 63
+      revision: ece5dc27409139df77cdee95e5969f3c473c0409
+      source:
+        path: resources
+        repoURL: https://github.com/itai-project-one/environment
+        targetRevision: HEAD
+    - deployStartedAt: "2022-08-12T12:47:25Z"
+      deployedAt: "2022-08-12T12:47:36Z"
+      id: 64
+      revision: ece5dc27409139df77cdee95e5969f3c473c0409
+      source:
+        path: resources
+        repoURL: https://github.com/itai-project-one/environment
+        targetRevision: HEAD
+    - deployStartedAt: "2022-08-12T12:52:52Z"
+      deployedAt: "2022-08-12T12:52:59Z"
+      id: 65
+      revision: ece5dc27409139df77cdee95e5969f3c473c0409
+      source:
+        path: resources
+        repoURL: https://github.com/itai-project-one/environment
+        targetRevision: HEAD
+    - deployStartedAt: "2022-08-12T12:53:14Z"
+      deployedAt: "2022-08-12T12:53:25Z"
+      id: 66
+      revision: ece5dc27409139df77cdee95e5969f3c473c0409
+      source:
+        path: resources
+        repoURL: https://github.com/itai-project-one/environment
+        targetRevision: HEAD
+    - deployStartedAt: "2022-08-12T12:56:45Z"
+      deployedAt: "2022-08-12T12:56:52Z"
+      id: 67
+      revision: ece5dc27409139df77cdee95e5969f3c473c0409
+      source:
+        path: resources
+        repoURL: https://github.com/itai-project-one/environment
+        targetRevision: HEAD
+    - deployStartedAt: "2022-08-12T13:04:44Z"
+      deployedAt: "2022-08-12T13:04:55Z"
+      id: 68
+      revision: c208d1a999927fb311bd88eb5fecba1a4584e323
+      source:
+        path: resources
+        repoURL: https://github.com/itai-project-one/environment
+        targetRevision: HEAD
+    - deployStartedAt: "2022-08-12T13:09:36Z"
+      deployedAt: "2022-08-12T13:09:44Z"
+      id: 69
+      revision: c208d1a999927fb311bd88eb5fecba1a4584e323
+      source:
+        path: resources
+        repoURL: https://github.com/itai-project-one/environment
+        targetRevision: HEAD
+  operationState:
+    message: waiting for completion of hook batch/Job/validate
+    operation:
+      initiatedBy:
+        username: admin
+      retry: {}
+      sync:
+        revision: c208d1a999927fb311bd88eb5fecba1a4584e323
+        syncStrategy:
+          hook: {}
+    phase: Running
+    startedAt: "2022-08-12T13:13:48Z"
+    syncResult:
+      resources:
+        - group: batch
+          hookPhase: Running
+          hookType: PreSync
+          kind: Job
+          message: job.batch/validate created
+          name: validate
+          namespace: default
+          syncPhase: PreSync
+          version: v1
+      revision: c208d1a999927fb311bd88eb5fecba1a4584e323
+      source:
+        path: resources
+        repoURL: https://github.com/itai-project-one/environment
+        targetRevision: HEAD
+  reconciledAt: "2022-08-12T13:12:45Z"
+  resources:
+    - health:
+        status: Healthy
+      kind: Service
+      name: canary-demo
+      namespace: default
+      status: Synced
+      version: v1
+    - health:
+        status: Healthy
+      kind: Service
+      name: canary-demo-preview
+      namespace: default
+      status: Synced
+      version: v1
+    - group: argoproj.io
+      kind: AnalysisTemplate
+      name: success-rate
+      namespace: default
+      status: Synced
+      version: v1alpha1
+    - group: argoproj.io
+      health:
+        status: Healthy
+      kind: Rollout
+      name: canary-demo
+      namespace: default
+      status: Synced
+      version: v1alpha1
+    - group: batch
+      hook: true
+      kind: Job
+      name: validate
+      namespace: default
+      requiresPruning: true
+      version: v1
+    - group: networking.k8s.io
+      health:
+        status: Healthy
+      kind: Ingress
+      name: canary-demo
+      namespace: default
+      status: Synced
+      version: v1
+    - group: networking.k8s.io
+      health:
+        status: Healthy
+      kind: Ingress
+      name: canary-demo-preview
+      namespace: default
+      status: Synced
+      version: v1
+  sourceType: Directory
+  summary:
+    externalURLs:
+      - http://canary-preview.localdev.me/
+      - http://canary.localdev.me/
+    images:
+      - argoproj/rollouts-demo:red
+      - curlimages/curl
+  sync:
+    comparedTo:
+      destination:
+        namespace: default
+        server: https://kubernetes.default.svc
+      source:
+        path: resources
+        repoURL: https://github.com/itai-project-one/environment
+        targetRevision: HEAD
+    revision: c208d1a999927fb311bd88eb5fecba1a4584e323
+    status: Synced
