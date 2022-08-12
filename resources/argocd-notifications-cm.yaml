@@ -17,7 +17,7 @@ data:
         body: |
           {
             "description": "ArgoCD",
-            "state": {{.app.status.operationState.phase}},
+            "state": "{{.app.status.operationState.phase}}",
             "app": "{{.app.metadata.name}}"
           }
   trigger.on-deployed: |
