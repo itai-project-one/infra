@@ -5,21 +5,13 @@ metadata:
     notifications.argoproj.io/subscribe.on-sync-failed.form: '""'
     notifications.argoproj.io/subscribe.on-sync-running.form: '""'
     notifications.argoproj.io/subscribe.on-sync-succeeded.form: '""'
-    notified.notifications.argoproj.io: '{"on-sync-running:[0[].xGlbhcF_taGYrI3UsrQsINn2hl0:form:\"\"":1660310029}'
+    notified.notifications.argoproj.io: '{"on-sync-succeeded:[0[].zxM90Et6k4Elb1-fHdjtDJq0xR0:form:\"\"":1660310241}'
   creationTimestamp: "2022-08-07T06:49:47Z"
-  generation: 1752
+  generation: 1756
   name: demo
   namespace: argocd
-  resourceVersion: "139474"
+  resourceVersion: "139696"
   uid: c6e6855e-d759-4f7a-a3c0-0a90a269c6a4
-operation:
-  initiatedBy:
-    username: admin
-  retry: {}
-  sync:
-    revision: c208d1a999927fb311bd88eb5fecba1a4584e323
-    syncStrategy:
-      hook: {}
 spec:
   destination:
     namespace: default
@@ -33,14 +25,6 @@ status:
   health:
     status: Healthy
   history:
-    - deployStartedAt: "2022-08-12T09:08:14Z"
-      deployedAt: "2022-08-12T09:08:25Z"
-      id: 60
-      revision: ece5dc27409139df77cdee95e5969f3c473c0409
-      source:
-        path: resources
-        repoURL: https://github.com/itai-project-one/environment
-        targetRevision: HEAD
     - deployStartedAt: "2022-08-12T09:47:59Z"
       deployedAt: "2022-08-12T09:48:10Z"
       id: 61
@@ -113,8 +97,17 @@ status:
         path: resources
         repoURL: https://github.com/itai-project-one/environment
         targetRevision: HEAD
+    - deployStartedAt: "2022-08-12T13:13:48Z"
+      deployedAt: "2022-08-12T13:17:20Z"
+      id: 70
+      revision: c208d1a999927fb311bd88eb5fecba1a4584e323
+      source:
+        path: resources
+        repoURL: https://github.com/itai-project-one/environment
+        targetRevision: HEAD
   operationState:
-    message: waiting for completion of hook batch/Job/validate
+    finishedAt: "2022-08-12T13:17:20Z"
+    message: successfully synced (all tasks run)
     operation:
       initiatedBy:
         username: admin
@@ -123,12 +116,12 @@ status:
         revision: c208d1a999927fb311bd88eb5fecba1a4584e323
         syncStrategy:
           hook: {}
-    phase: Running
+    phase: Succeeded
     startedAt: "2022-08-12T13:13:48Z"
     syncResult:
       resources:
         - group: batch
-          hookPhase: Running
+          hookPhase: Succeeded
           hookType: PreSync
           kind: Job
           message: job.batch/validate created
@@ -136,12 +129,66 @@ status:
           namespace: default
           syncPhase: PreSync
           version: v1
+        - group: ""
+          hookPhase: Running
+          kind: Service
+          message: service/canary-demo-preview unchanged
+          name: canary-demo-preview
+          namespace: default
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ""
+          hookPhase: Running
+          kind: Service
+          message: service/canary-demo unchanged
+          name: canary-demo
+          namespace: default
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: networking.k8s.io
+          hookPhase: Running
+          kind: Ingress
+          message: ingress.networking.k8s.io/canary-demo-preview unchanged
+          name: canary-demo-preview
+          namespace: default
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: networking.k8s.io
+          hookPhase: Running
+          kind: Ingress
+          message: ingress.networking.k8s.io/canary-demo unchanged
+          name: canary-demo
+          namespace: default
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: argoproj.io
+          hookPhase: Running
+          kind: Rollout
+          message: rollout.argoproj.io/canary-demo unchanged
+          name: canary-demo
+          namespace: default
+          status: Synced
+          syncPhase: Sync
+          version: v1alpha1
+        - group: argoproj.io
+          hookPhase: Running
+          kind: AnalysisTemplate
+          message: analysistemplate.argoproj.io/success-rate unchanged
+          name: success-rate
+          namespace: default
+          status: Synced
+          syncPhase: Sync
+          version: v1alpha1
       revision: c208d1a999927fb311bd88eb5fecba1a4584e323
       source:
         path: resources
         repoURL: https://github.com/itai-project-one/environment
         targetRevision: HEAD
-  reconciledAt: "2022-08-12T13:12:45Z"
+  reconciledAt: "2022-08-12T13:17:20Z"
   resources:
     - health:
         status: Healthy
