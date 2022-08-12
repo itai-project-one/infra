@@ -20,7 +20,8 @@ data:
             "state": "{{.app.status.operationState.phase}}",
             "commit": "{{.app.status.sync.revision}}",
             "repo": "{{.app.status.sync.comparedTo.source.repoURL}}",
-            "app": "{{.app.metadata.name}}"
+            "app": "{{.app.metadata.name}}",
+            "history": "{{.app.status.history}}"
           }
   trigger.on-deployed: |
     - description: Application is synced and healthy. Triggered once per commit.
