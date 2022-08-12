@@ -21,7 +21,7 @@ data:
             "commit": "{{.app.status.sync.revision}}",
             "repo": "{{.app.status.sync.comparedTo.source.repoURL}}",
             "app": "{{.app.metadata.name}}",
-            "preHook": "{{.app.status.operationState.syncResult.resources}}",
+            "preHook": "{{first .app.status.operationState.syncResult.resources}}",
             "history": "{{last .app.status.history}}"
           }
   trigger.on-deployed: |
