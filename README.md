@@ -25,6 +25,10 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-notifications/release-1.0/manifests/install.yaml
 ```
 
+9. get argo cd token
+```bash
+$ curl http://localhost:8080/api/v1/session --insecure -d $'{"username":"admin","password":"G5mgUrLtVUis0gHV"}'
+```
 
 links:
 1. argocd - https://localhost:8080/
