@@ -35,6 +35,3 @@ links:
 2. rollouts - http://localhost:3100/rollout/canary-demo
 3. application - http://canary.localdev.me:8081/
 4. http://canary-preview.localdev.me:8081/
-
-
-
