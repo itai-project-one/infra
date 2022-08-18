@@ -18,7 +18,7 @@ data:
           {
             "description": "ArgoCD",
             "state": "{{.app.status.operationState.phase}}",
-            "commit": "{{.app.status.operationState.sync.revision | default .app.status.sync.revision}}",
+            "commit": "{{.app.status.operationState.sync.revision}}",
             "repo": "{{.app.status.sync.comparedTo.source.repoURL}}",
             "app": "{{.app.metadata.name}}",
             "preHook": "{{first .app.status.operationState.syncResult.resources}}",
