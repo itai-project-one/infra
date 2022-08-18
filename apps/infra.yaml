@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-failed.form: '""'
+    notifications.argoproj.io/subscribe.on-sync-running.from: '""'
+    notifications.argoproj.io/subscribe.on-sync-succeeded.form: '""'
+  name: infra
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: resources
+    repoURL: https://github.com/itai-project-one/infra
+    targetRevision: HEAD
