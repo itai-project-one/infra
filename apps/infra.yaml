@@ -3,7 +3,7 @@ kind: Application
 metadata:
   annotations:
     notifications.argoproj.io/subscribe.on-sync-failed.form: '""'
-    notifications.argoproj.io/subscribe.on-sync-running.from: '""'
+    notifications.argoproj.io/subscribe.on-sync-running.form: '""'
     notifications.argoproj.io/subscribe.on-sync-succeeded.form: '""'
   name: infra
   namespace: argocd
