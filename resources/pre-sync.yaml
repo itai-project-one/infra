@@ -22,7 +22,7 @@ spec:
             - "-X"
             - "POST"
             - "-d"
-            - "app=demo&owner=itai-project-one&repo=infra"
+            - "app=infra&owner=itai-project-one&repo=infra"
             - "https://37f4-2a0d-6fc2-66d2-e000-e9-b7fd-9593-7676.eu.ngrok.io/operations/validate"
       restartPolicy: Never
   backoffLimit: 0
